@@ -8,10 +8,9 @@
   <div id="chat"></div>
   <button onclick="startQuiz()">Iniciar Quiz</button>
   <button onclick="showResumo()">Ver Resumo</button>
+
   <script>
-	  
     const quiz = [
-      // Fisiologia
       {
         pergunta: "Qual é o principal neurotransmissor do sistema parassimpático?",
         opcoes: ["Adrenalina", "Acetilcolina", "Noradrenalina"],
@@ -22,25 +21,21 @@
         opcoes: ["Tiroxina (T4)", "Insulina", "Adrenalina"],
         correta: 0
       },
-
-        {
+      {
         pergunta: "Qual a função do sistema nervoso simpático?",
         opcoes: ["Promover a digestão", "Reação de luta ou fuga", "Acelerar o metabolismo"],
         correta: 1
       },
-
-    {
+      {
         pergunta: "Qual a principal função dos alvéolos pulmonares?",
         opcoes: ["Trocar oxigênio e dióxido de carbono", "Produzir muco", "Controlar a pressão arterial"],
-        correta: 1
+        correta: 0
       },
-    {
+      {
         pergunta: "O que estimula a liberação de insulina no pâncreas?",
         opcoes: ["Diminuição da temperatura", "Aumento da glicose no sangue", "Aumento do cálcio extracelular"],
-        correta: 2
+        correta: 1
       },
-
-      // Farmacologia
       {
         pergunta: "Qual é o mecanismo de ação dos AINEs?",
         opcoes: ["Inibição da enzima COX", "Bloqueio de receptores GABA", "Estimulação da dopamina"],
@@ -50,41 +45,35 @@
         pergunta: "Qual antiparasitário é amplamente usado em cães e gatos?",
         opcoes: ["Ivermectina", "Amoxicilina", "Enrofloxacina"],
         correta: 0
-      }
-
+      },
       {
         pergunta: "Qual a classe de medicamentos é usada para induzir o vômito em cães?",
         opcoes: ["Antibióticos", "Eméticos", "Corticoides"],
-        correta: 2
+        correta: 1
       },
-
-    {
-        pergunta: "Porque é contraindicado usar AINEs e corticoides juntos?",
+      {
+        pergunta: "Por que é contraindicado usar AINEs e corticoides juntos?",
         opcoes: ["Porque corre o risco de câncer", "Aumenta o risco de úlceras", "Causa dor ou desconforto"],
-        correta: 2
+        correta: 1
       },
-
-     {
+      {
         pergunta: "O que significa meia-vida em fármacos?",
         opcoes: ["Eficácia do fármaco", "Tempo de validade do fármaco", "Tempo para metade da droga ser eliminada"],
-        correta: 3
-      },
-    
+        correta: 2
+      }
+    ];
+
     const resumos = [
       "🧠 Acetilcolina é o principal neurotransmissor do sistema parassimpático.",
       "💊 AINEs atuam inibindo a COX, reduzindo inflamação e dor.",
       "⭐ Tiroxina (T4) regula o metabolismo do organismo.",
-      "🪛 Ivermectina combate endo e ectoparasitas em cães e gatos."
+      "🪛 Ivermectina combate endo e ectoparasitas em cães e gatos.",
+      "🫀 Sistema cardiovascular: o sangue oxigenado sai do ventrículo esquerdo pela aorta e nutre os tecidos.",
+      "🧠 Simpático vs. Parassimpático: o simpático acelera, o parassimpático acalma.",
+      "🧪 Renal: a filtração acontece no glomérulo, seguida por reabsorção nos túbulos.",
+      "🧬 Endócrino: a hipófise regula outras glândulas com hormônios tróficos."
     ];
 
-     const resumos = [
-     " 🫀 Sistema cardiovascular: o sangue oxigenado sai do ventrículo esquerdo pela aorta e nutre os tecidos."
-		 " 🧠 Simpático vs. Parassimpático: o simpático acelera, o parassimpático acalma."
-	   " 🧪 Renal: a filtração acontece no glomérulo, seguida por reabsorção nos túbulos."
-	    "🧬 Endócrino: a hipófise regula outras glândulas com hormônios tróficos."
-    ];
-
-    
     const imagens = [
       {
         titulo: "Sistema Cardiovascular Canino",
@@ -118,7 +107,9 @@
     function showResumo() {
       const div = document.getElementById("chat");
       div.innerHTML = "<h3>📄 Resumos Rápidos</h3>";
-      resumos.forEach(r => { div.innerHTML += `<p>${r}</p>`; });
+      resumos.forEach(r => {
+        div.innerHTML += `<p>${r}</p>`;
+      });
       imagens.forEach(img => {
         div.innerHTML += `<h4>${img.titulo}</h4>`;
         div.innerHTML += `<img src="${img.url}" alt="${img.titulo}" width="${img.width}"><br>`;
