@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,50 +11,74 @@
 
   <script>
     const quiz = [
+      // Fisiologia
       {
         pergunta: "Qual é o principal neurotransmissor do sistema parassimpático?",
         opcoes: ["Adrenalina", "Acetilcolina", "Noradrenalina"],
         correta: 1
       },
       {
-        pergunta: "Qual é o efeito da atropina?",
-        opcoes: ["Estimula a digestão", "Bloqueia receptores muscarínicos", "Aumenta a salivação"],
-        correta: 1
+        pergunta: "Qual hormônio é produzido pela glândula tireoide?",
+        opcoes: ["Tiroxina (T4)", "Insulina", "Adrenalina"],
+        correta: 0
+      },
+      // Farmacologia
+      {
+        pergunta: "Qual é o mecanismo de ação dos AINEs?",
+        opcoes: ["Inibição da enzima COX", "Bloqueio de receptores GABA", "Estimulação da dopamina"],
+        correta: 0
+      },
+      {
+        pergunta: "Qual antiparasitário é amplamente usado em cães e gatos?",
+        opcoes: ["Ivermectina", "Amoxicilina", "Enrofloxacina"],
+        correta: 0
       }
     ];
 
     const resumos = [
-      "🧠 A acetilcolina é o principal neurotransmissor do sistema parassimpático. Ela atua em receptores muscarínicos e nicotínicos.",
-      "💊 A atropina é um fármaco anticolinérgico que bloqueia os receptores muscarínicos, diminuindo secreções e aumentando a frequência cardíaca."
+      "🧠 Acetilcolina é o principal neurotransmissor do sistema parassimpático.",
+      "💊 AINEs atuam inibindo a COX, reduzindo inflamação e dor.",
+      "⭐ Tiroxina (T4) regula o metabolismo do organismo.",
+      "🪛 Ivermectina combate endo e ectoparasitas em cães e gatos."
+    ];
+
+    const imagens = [
+      {
+        titulo: "Sistema Cardiovascular Canino",
+        url: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Dog_heart_diagram-en.svg",
+        width: 400
+      },
+      {
+        titulo: "Aplicação subcutânea em felinos",
+        url: "https://upload.wikimedia.org/wikipedia/commons/2/24/Subcutaneous_injection_cat.jpg",
+        width: 350
+      }
     ];
 
     function startQuiz() {
       const div = document.getElementById("chat");
       div.innerHTML = "";
-      quiz.forEach((q, index) => {
-        div.innerHTML += `<p>${index + 1}. ${q.pergunta}</p>`;
-        q.opcoes.forEach((op, i) => {
-          div.innerHTML += `<button onclick="check(${index}, ${i})">${op}</button><br>`;
+      quiz.forEach((q, i) => {
+        div.innerHTML += `<p>${i + 1}. ${q.pergunta}</p>`;
+        q.opcoes.forEach((op, j) => {
+          div.innerHTML += `<button onclick="check(${i}, ${j})">${op}</button><br>`;
         });
         div.innerHTML += "<hr>";
       });
     }
 
-    function check(qIndex, opIndex) {
-      const div = document.getElementById("chat");
-      const correta = quiz[qIndex].correta;
-      if (opIndex === correta) {
-        alert("✅ Correto!");
-      } else {
-        alert("❌ Errado. A resposta certa é: " + quiz[qIndex].opcoes[correta]);
-      }
+    function check(i, j) {
+      const correta = quiz[i].correta;
+      alert(j === correta ? "✅ Correto!" : `❌ Errado. Resposta certa: ${quiz[i].opcoes[correta]}`);
     }
 
     function showResumo() {
       const div = document.getElementById("chat");
       div.innerHTML = "<h3>📄 Resumos Rápidos</h3>";
-      resumos.forEach((r) => {
-        div.innerHTML += `<p>${r}</p>`;
+      resumos.forEach(r => { div.innerHTML += `<p>${r}</p>`; });
+      imagens.forEach(img => {
+        div.innerHTML += `<h4>${img.titulo}</h4>`;
+        div.innerHTML += `<img src="${img.url}" alt="${img.titulo}" width="${img.width}"><br>`;
       });
     }
   </script>
